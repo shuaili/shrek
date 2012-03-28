@@ -1,0 +1,11 @@
+Import('env')
+env = env.Clone()
+source = [
+       "Thread.cpp"
+       ]
+objs = env.Object(source)
+#env.Library("base", objs)
+env.SharedLibrary("base", source)
+
+for subdir in ['test']:
+    SConscript('%s/SConscript'%subdir)

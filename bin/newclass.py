@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 
 import sys
 import os
@@ -9,8 +9,7 @@ def createClassH(path, classname):
     context += "#ifndef SHREK_" + classname.upper() + "_H" + "\n"
     context += "#define SHREK_" + classname.upper() + "_H" + "\n"
     context += "" + "\n"
-    context += "#include <iostream>" + "\n"
-    context += "#include <string>" + "\n"
+    context += "#include <common/Common.h>" + "\n"
     context += "" + "\n"
     context += "namespace shrek {\n" #begin namespace
     context += "" + "\n"
@@ -24,8 +23,8 @@ def createClassH(path, classname):
     context += "    " + classname + "& operator=(const " + classname + " &);" + "\n"
     context += "public:" + "\n"
     context += "" + "\n"
-    context += "private:" + "\n"
-    context += "    SHREK_LOG_DECLARE();" + "\n"
+#    context += "private:" + "\n"
+#    context += "    SHREK_LOG_DECLARE();" + "\n"
     context += "};" + "\n"
     context += "" + "\n"
     context += "SHREK_TYPEDEF_PTR(" + classname +");" + "\n\n"
@@ -109,5 +108,5 @@ if __name__ == "__main__":
         sys.exit(1)
     path = os.getcwd()
     if createClass(path, sys.argv[1]) == 2:
-        insertSConscript(path + "/Sconstruct", sys.argv[1])
+        insertSConscript(path + "/SConstruct", sys.argv[1])
 #           insertMakefile(path + "/Makefile.am", sys.argv[1])

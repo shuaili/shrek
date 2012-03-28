@@ -1,0 +1,11 @@
+Import('env')
+env = env.Clone()
+source = [
+       "ThreadTest.cpp",
+       ]
+objs = env.Object(source)
+
+env['LIBPATH'] = ['..']
+env['LIBS'] = ['base', 'pthread']
+
+env.Program("ThreadTest", objs)
